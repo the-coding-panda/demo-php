@@ -22,12 +22,17 @@ Route::get('/hello', function () {
     return 'hello';
 });
 
-Route::get('/goodbye/{id}', function ($id) {
-    return 'User '.$id;
+Route::get('/monday', function () {
+    return view('monday');
 });
 
-Route::get('/wednesday', function ($query) {
-    return view('wednesday');
+Route::get('/tuesday', function () {
+    $single = 'its Tuesday!';
+    return view('tuesday', ['just_one' => $single]);
+});
+
+Route::get('/wednesday/{query}/{another}', function ($query, $another) {
+    return view('wednesday', ['name' => $query, 'surname' => $another]);
 });
 
 Route::get('/dashboard', function () {

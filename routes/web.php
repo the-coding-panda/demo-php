@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,9 @@ Route::get('/wednesday/{query}/{another}', function ($query, $another) {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/persons', [PersonController::class, 'index'])->name('persons.index');
+
+Route::get('/persons/{id}', [PersonController::class, 'show'])->name('persons.show');
 
 require __DIR__.'/auth.php';

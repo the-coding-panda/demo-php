@@ -4,9 +4,9 @@
 
 @section('content')
     <p>Persons in the system:</p>
-    <ul>
+    <ul class="list-group">
         @foreach($persons as $person)
-            <li>
+            <li class="list-group-item">
                 <a href="{{route('persons.show', ['id'=>$person->id])}}">{{$person->firstName}} {{$person->surname}}</a>
             </li>
         @endforeach

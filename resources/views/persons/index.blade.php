@@ -3,6 +3,7 @@
 @section('title', 'Persons')
 
 @section('content')
+    <a href="{{route('persons.create')}}" class="btn btn-primary">Create Person</a>
     <p>Persons in the system:</p>
     <ul class="list-group">
         @foreach($persons as $person)

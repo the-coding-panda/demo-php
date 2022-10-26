@@ -9,6 +9,21 @@
 </head>
 <body>
 <h1>My Application @yield('title')</h1>
+@if($errors->any())
+<div class="alert alert-danger">
+    Errors:
+    <ul>
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+@if(session('message'))
+    <p class="alert alert-info">
+        {{session('message')}}
+    </p>
+@endif
 <div class="container">
     @yield('content')
 </div>

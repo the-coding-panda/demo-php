@@ -25,7 +25,7 @@ class PersonController extends Controller
      */
     public function create()
     {
-        //
+        return view('persons.create');
     }
 
     /**
@@ -36,7 +36,24 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'firstName' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'address' => 'required|max:510',
+            'favouriteColour' => 'required|max:255',
+            'postcode' => 'required|max:10',
+        ]);
+
+        $p = new Person();
+        $p->firstName = $validatedData['firstName'];
+        $p->surname = $validatedData['surname'];
+        $p->address = $validatedData['address'];
+        $p->favouriteColour = $validatedData['favouriteColour'];
+        $p->postcode = $validatedData['postcode'];
+        $p->save();
+
+        session()->flash("message", "Persons was created");
+        return redirect()->route("persons.index");
     }
 
     /**

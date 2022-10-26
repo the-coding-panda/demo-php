@@ -42,6 +42,11 @@ Route::get('/dashboard', function () {
 
 Route::get('/persons', [PersonController::class, 'index'])->name('persons.index');
 
+
+
+Route::get('/persons/create', [PersonController::class, 'create'])->name('persons.create');
+Route::post('/persons', [PersonController::class, 'store'])->name('persons.store');
 Route::get('/persons/{id}', [PersonController::class, 'show'])->name('persons.show');
+
 
 require __DIR__.'/auth.php';

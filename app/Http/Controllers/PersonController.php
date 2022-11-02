@@ -62,9 +62,8 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $person)
     {
-        $person = Person::FindOrFail($id);
         return view('persons.show', ['person'=>$person]);
     }
 
@@ -97,8 +96,9 @@ class PersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $person)
     {
-        //
+        $person->delete();
+        return redirect()->route("persons.index")->with("message","Person was deleted");
     }
 }

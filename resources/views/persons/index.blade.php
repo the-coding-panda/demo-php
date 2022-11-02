@@ -8,7 +8,7 @@
     <ul class="list-group">
         @foreach($persons as $person)
             <li class="list-group-item">
-                <a href="{{route('persons.show', ['id'=>$person->id])}}">{{$person->firstName}} {{$person->surname}}</a>
+                <a href="{{route('persons.show', ['person'=>$person])}}">{{$person->firstName}} {{$person->surname}}</a>
             </li>
         @endforeach
     </ul>

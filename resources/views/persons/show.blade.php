@@ -10,4 +10,10 @@
         <li>Favourite Colour: {{$person->favouriteColour}}</li>
     </ul>
 
+    <form method="POST" action="{{route('persons.destroy', ['person'=>$person])}}">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Delete</button>
+    </form>
+
 @endsection

@@ -5,12 +5,29 @@
 @section('content')
     <a href="{{route('persons.create')}}" class="btn btn-primary">Create Person</a>
     <p>Persons in the system:</p>
-    <ul class="list-group">
+    <table id="user-table" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
         @foreach($persons as $person)
-            <li class="list-group-item">
-                <a href="{{route('persons.show', ['person'=>$person])}}">{{$person->firstName}} {{$person->surname}}</a>
-            </li>
+            <tr>
+                <td>{{ $person->firstName }} {{ $person->surname }}</td>
+                <td><a href="{{route('persons.show', ['person'=>$person])}}">More info</a></td>
+            </tr>
         @endforeach
-    </ul>
+        </tbody>
+    </table>
+    @push('scripts')
+        <script>
+            $(document).ready( function () {
+                $('#user-table').DataTable();
+            } );
+        </script>
+    @endpush
 
 @endsection
+

@@ -30,7 +30,7 @@ Route::get('/monday', function () {
 Route::get('/tuesday', function () {
     $single = 'its Tuesday!';
     return view('tuesday', ['just_one' => $single]);
-})->middleware(['auth']);;
+})->middleware(['throttle:5,2']);;
 
 Route::get('/wednesday/{query}/{another}', function ($query, $another) {
     return view('wednesday', ['name' => $query, 'surname' => $another]);
@@ -40,7 +40,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/persons', [PersonController::class, 'index'])->name('persons.index')->middleware(['auth']);;
+Route::get('/persons', [PersonController::class, 'index'])->name('persons.index')->middleware(['auth', 'daily']);;
 
 
 
